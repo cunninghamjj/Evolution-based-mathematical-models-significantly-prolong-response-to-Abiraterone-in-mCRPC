@@ -1,0 +1,38 @@
+ #!/usr/bin/env bash
+ set -ex
+
+## Create results folders.
+mkdir -p ../results/R_Beta_OptimalStartDensityData
+
+mkdir -p ../results/PatientFigures/OriginalTrialPSA
+mkdir -p ../results/PatientFigures/OptimizedModelFits
+mkdir -p ../results/PatientFigures/AlternateTreatment_SOC
+mkdir -p ../results/PatientFigures/AlternateTreatment_IAT
+mkdir -p ../results/PatientFigures/AlternateTreatment_Adaptive
+
+mkdir -p ../results/HypotheticalAlphaComparison
+
+
+## Figure 2: Grid Search for Optimal parameter values
+#### Do not uncomment unless you're willing to let this run for hours... ####
+# matlab -nodisplay -r "addpath(genpath('.')); R_Beta_GridSearch"
+
+## Figure 1: Kaplan Meier Analysis 
+# matlab -nodisplay -r "addpath(genpath('.')); KMPlotTrial"
+
+## Figure 3: Plot Time to Progression as a function of resistant cell density at the time of initial abiraterone treatment
+# matlab -nodisplay -r "addpath(genpath('.')); PlotDensitiesAtInitialAbi"
+ 
+## Figure 5: Calculate and plot comparison of alpha values for hypothetical patient
+# matlab -nodisplay -r "addpath(genpath('.')); AlphaComparison"
+
+## The rest of the figures in the manuscript are created from figures created in these scripts.
+
+## Plot original patient data
+# matlab -nodisplay -r "addpath(genpath('.')); PlotPatientData"
+
+## Plot optimized model fits
+# matlab -nodisplay -r "addpath(genpath('.')); PlotOptimizedModelFits"
+
+## Calculate and plot alternative treatments for all patients
+# matlab -nodisplay -r "addpath(genpath('.')); GiveAlternativeTreatments"
